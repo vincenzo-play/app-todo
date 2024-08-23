@@ -19,7 +19,7 @@ const Activity = ({activity}) => {
        </div>
 
       <div className="input-group p-4">
-        <span className="input-group-text">Aggiungi attività</span>
+        <span className="input-group-text ">Aggiungi attività</span>
         <input type="text" class="form-control" aria-label="Aggiungi attività"/>
         <button type="button" className="btn btn-primary">Salva</button>
       </div>
