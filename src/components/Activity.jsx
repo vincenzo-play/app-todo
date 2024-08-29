@@ -4,7 +4,7 @@ const Activity = ({ activity }) => {
   return (
     <div className="col-12 col-md-9 p-0 overflow-scroll">
       <div className="border-bottom p-3" style={{ height: "73px" }}>
-        <h3 className="m-1 fw-bold">Nome Lista</h3>
+        <h3 className="m-1 fw-bold text-md-start text-center">Nome Lista</h3>
       </div>
       <div className="p-4">
         <ul className="list-group">

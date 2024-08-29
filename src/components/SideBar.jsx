@@ -6,8 +6,8 @@ const SideBar = ({ user, list, ...rest }) => {
   return (
     <div
       className={`${
-        windowSize.width < 768 ? " " : "vh-100 border-end"
-      } col-12 col-md-3 bg-light border-buttom shadow pe-0`}
+        windowSize.width < 768 ? "border-bottom" : "vh-100 border-end"
+      } col-12 col-md-3 bg-light shadow pe-0`}
     >
       <User user={user} />
 
