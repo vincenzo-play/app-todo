@@ -5,7 +5,7 @@ export const user = {
   }
 
  export const list =[
-    {id:1, label: "Lista uno"},
+    {id:1, label: "Lista uno", active: true},
     {id:2, label: "Lista due"},
     {id:3, label: "Lista tre"},
     {id:4, label: "Lista quattro"},
