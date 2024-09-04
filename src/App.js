@@ -6,7 +6,7 @@ import { fab } from "@fortawesome/free-brands-svg-icons";
 
 import SideBar from "./components/SideBar";
 import Activity from "./components/Activity";
-import NavBar from "./components/NavBar";
+// import NavBar from "./components/NavBar";
 
 import { user, list } from "./data";
 
@@ -29,7 +29,7 @@ const App = () => {
 
   return (
     <div className="container-fluid p-0 overflow-hidden">
-      <NavBar />
+      {/* <NavBar /> */}
       <div className="row">
         <SideBar
           user={user}
