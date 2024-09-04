@@ -7,7 +7,7 @@ export const user = {
 export const list = [
   {
     id: 1,
-    label: "Cinema",
+    label: "Film",
     activity: [
       { name: "Attività uno" },
       { name: "Attività due" },

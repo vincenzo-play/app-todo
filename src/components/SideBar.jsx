@@ -1,5 +1,6 @@
 import { useState } from "react";
 import User from "./User";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const SideBar = ({ user, list, windowSize, setTodo }) => {
   const [done, setDone] = useState(Array(list.length).fill(false));
@@ -15,7 +16,7 @@ const SideBar = ({ user, list, windowSize, setTodo }) => {
     <div
       className={`${
         windowSize.width < 768 ? "border-bottom" : "vh-100 border-end"
-      } col-12 col-md-3 bg-light shadow pe-0  overflow-scroll`}
+      } col-12 col-md-3 bg-light shadow pe-0  overflow-scroll `}
       style={{ height: "300px" }}
     >
       <User user={user} />
@@ -35,6 +36,11 @@ const SideBar = ({ user, list, windowSize, setTodo }) => {
             </button>
           ))}
         </div>
+      </div>
+      <div className="d-flex justify-content-center py-4">
+        <button className="btn btn-primary rounded-5 ">
+          <FontAwesomeIcon icon="fa-solid fa-plus" />
+        </button>
       </div>
     </div>
   );
