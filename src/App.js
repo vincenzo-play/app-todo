@@ -4,11 +4,11 @@ import { far } from "@fortawesome/free-regular-svg-icons";
 import { fas } from "@fortawesome/free-solid-svg-icons";
 import { fab } from "@fortawesome/free-brands-svg-icons";
 
+import ListName from "./components/ListName";
 import TodoList from "./components/TodoList";
-import Activity from "./components/Activity";
 // import NavBar from "./components/NavBar";
 
-import { user, list } from "./data";
+import { user, data } from "./data";
 
 library.add(far, fas, fab);
 
@@ -31,13 +31,13 @@ const App = () => {
     <div className="container-fluid p-0 overflow-hidden">
       {/* <NavBar /> */}
       <div className="row">
-        <TodoList
+        <ListName
           user={user}
-          list={list}
+          data={data}
           windowSize={windowSize}
           setTodo={setTodo}
         />
-        <Activity todo={todo} />
+        <TodoList todo={todo} />
       </div>
     </div>
   );

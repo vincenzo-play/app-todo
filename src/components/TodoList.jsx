@@ -1,48 +1,72 @@
-import { useState } from "react";
-import User from "./User";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import React from "react";
 
-const TodoList = ({ user, list, windowSize, setTodo }) => {
-  const [done, setDone] = useState(Array(list.length).fill(false));
-
-  const handleChangeClick = (el) => {
-    const newDone = Array(list.length).fill(false);
-    newDone[el.id] = true;
-    setDone(newDone);
-    setTodo(el);
-  };
-
+const TodoList = ({ todo }) => {
   return (
-    <div
-      className={`${
-        windowSize.width < 768 ? "border-bottom" : "vh-100 border-end"
-      } col-12 col-md-3 bg-light pe-0  overflow-scroll `}
-      style={{ height: "300px" }}
-    >
-      <User user={user} />
-
-      <div className="p-4">
-        <div className="list-group">
-          {list.map((el) => (
-            <button
-              key={el.id}
-              type="button"
-              className={`list-group-item list-group-item-action ${
-                done[el.id] ? "active" : " "
-              }`}
-              onClick={() => handleChangeClick(el)}
-            >
-              <div className="d-flex justify-content-between p-1">
-                <div>{el.label}</div>
-                <div>{el.activity.length}</div>
-              </div>
-            </button>
-          ))}
-        </div>
+    <div className="col-12 col-md-9 p-0 vh-100">
+      <div
+        className="border-bottom p-3 bg-white sticky-top"
+        style={{ height: "73px" }}
+      >
+        <h3 className="m-1 fw-bold text-md-start text-center ">
+          {todo?.list ? todo?.list : " "}
+        </h3>
       </div>
-      <div className="d-flex justify-content-center py-4">
-        <button className="btn btn-primary rounded-5 ">
-          <FontAwesomeIcon icon="fa-solid fa-plus" />
+      <div className="p-4 h-100 overflow-scroll">
+        {todo ? (
+          <ul className="list-group">
+            {todo.todo.map((el) => (
+              <li
+                className="list-group-item d-flex justify-content-between align-items-center"
+                key={el.id}
+              >
+                <div>
+                  <input
+                    className="form-check-input me-3"
+                    type="checkbox"
+                    checked={el.done}
+                    id={el.id}
+                    readOnly={true}
+                  />
+                  <label className="form-check-label" htmlFor={el.id}>
+                    <p
+                      className={
+                        el.done
+                          ? "text-black-50 text-decoration-line-through m-0"
+                          : "m-0"
+                      }
+                    >
+                      {el.name}
+                    </p>
+                  </label>
+                </div>
+                <button className="btn bg-light rounded-circle ">
+                  <FontAwesomeIcon
+                    icon="fa-regular fa-trash-can"
+                    className="text-black-50"
+                  />
+                </button>
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <div className="w-100 h-100 d-flex justify-content-center align-items-center">
+            <p className=" fs-3 text-secondary text-opacity-25">
+              Nessuna attività selezionata
+            </p>
+          </div>
+        )}
+      </div>
+
+      <div className="input-group p-4 bg-white border-top sticky-bottom">
+        <span className="input-group-text ">Aggiungi attività</span>
+        <input
+          type="text"
+          className="form-control"
+          aria-label="Aggiungi attività"
+        />
+        <button type="button" className="btn btn-primary">
+          Salva
         </button>
       </div>
     </div>

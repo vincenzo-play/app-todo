@@ -4,11 +4,11 @@ export const user = {
   img: "https://github.com/lifeisfoo.png",
 };
 
-export const list = [
+export const data = [
   {
     id: 1,
-    label: "Film",
-    activity: [
+    list: "Film",
+    todo: [
       { id: 1, name: "Attività uno", done: false },
       { id: 2, name: "Attività due", done: false },
       { id: 3, name: "Attività tre", done: false },
@@ -23,8 +23,8 @@ export const list = [
   },
   {
     id: 2,
-    label: "Da Studiare",
-    activity: [
+    list: "Da Studiare",
+    todo: [
       { id: 1, name: "Attività uno", done: false },
       { id: 2, name: "Attività due", done: false },
       { id: 3, name: "Attività tre", done: true },
@@ -34,8 +34,8 @@ export const list = [
   },
   {
     id: 3,
-    label: "Viaggi",
-    activity: [
+    list: "Viaggi",
+    todo: [
       { id: 1, name: "Attività uno", done: false },
       { id: 2, name: "Attività due", done: true },
       { id: 4, name: "Attività tre", done: false },
@@ -43,8 +43,8 @@ export const list = [
   },
   {
     id: 4,
-    label: "Giochi",
-    activity: [
+    list: "Giochi",
+    todo: [
       { id: 1, name: "Attività uno", done: false },
       { id: 2, name: "Attività due", done: true },
       { id: 3, name: "Attività tre", done: false },
