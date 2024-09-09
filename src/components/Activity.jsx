@@ -1,3 +1,4 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 
 const Activity = ({ todo }) => {
@@ -15,25 +16,35 @@ const Activity = ({ todo }) => {
         {todo ? (
           <ul className="list-group">
             {todo.activity.map((el) => (
-              <li className="list-group-item" key={el.id}>
-                <input
-                  className="form-check-input me-3"
-                  type="checkbox"
-                  checked={el.done}
-                  id={el.id}
-                />
-                <label className="form-check-label" htmlFor={el.id}>
-                  <p
-                    className={
-                      el.done
-                        ? "text-black-50 text-decoration-line-through m-0"
-                        : "m-0"
-                    }
-                  >
-                    {" "}
-                    {el.name}
-                  </p>
-                </label>
+              <li
+                className="list-group-item d-flex justify-content-between align-items-center"
+                key={el.id}
+              >
+                <div>
+                  <input
+                    className="form-check-input me-3"
+                    type="checkbox"
+                    checked={el.done}
+                    id={el.id}
+                  />
+                  <label className="form-check-label" htmlFor={el.id}>
+                    <p
+                      className={
+                        el.done
+                          ? "text-black-50 text-decoration-line-through m-0"
+                          : "m-0"
+                      }
+                    >
+                      {el.name}
+                    </p>
+                  </label>
+                </div>
+                <button className="btn bg-light rounded-circle ">
+                  <FontAwesomeIcon
+                    icon="fa-regular fa-trash-can"
+                    className="text-black-50"
+                  />
+                </button>
               </li>
             ))}
           </ul>

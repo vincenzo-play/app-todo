@@ -32,7 +32,7 @@ const TodoList = ({ user, list, windowSize, setTodo }) => {
               }`}
               onClick={() => handleChangeClick(el)}
             >
-              <div className="d-flex justify-content-between">
+              <div className="d-flex justify-content-between p-1">
                 <div>{el.label}</div>
                 <div>{el.activity.length}</div>
               </div>

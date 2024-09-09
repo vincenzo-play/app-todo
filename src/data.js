@@ -37,7 +37,7 @@ export const list = [
     label: "Viaggi",
     activity: [
       { id: 1, name: "Attività uno", done: false },
-      { id: 2, name: "Attività due", done: false },
+      { id: 2, name: "Attività due", done: true },
       { id: 4, name: "Attività tre", done: false },
     ],
   },
@@ -46,7 +46,7 @@ export const list = [
     label: "Giochi",
     activity: [
       { id: 1, name: "Attività uno", done: false },
-      { id: 2, name: "Attività due", done: false },
+      { id: 2, name: "Attività due", done: true },
       { id: 3, name: "Attività tre", done: false },
       { id: 4, name: "Attività quattro", done: false },
       { id: 5, name: "Attività cinque", done: false },
