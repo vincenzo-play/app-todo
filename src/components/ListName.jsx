@@ -22,7 +22,7 @@ const ListName = ({ user, data, windowSize, setTodo }) => {
       <User user={user} />
 
       <div className="p-4">
-        <div className="list-group">
+        <div className="list-group ">
           {data.map((el) => (
             <button
               key={el.id}

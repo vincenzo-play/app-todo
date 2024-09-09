@@ -3,7 +3,7 @@ import React from "react";
 
 const TodoList = ({ todo }) => {
   return (
-    <div className="col-12 col-md-9 p-0 vh-100">
+    <div className="col-12 col-md-9 p-0 vh-100 overflow-scroll">
       <div
         className="border-bottom p-3 bg-white sticky-top"
         style={{ height: "73px" }}
@@ -12,9 +12,10 @@ const TodoList = ({ todo }) => {
           {todo?.list ? todo?.list : " "}
         </h3>
       </div>
-      <div className="p-4 h-100 overflow-scroll">
-        {todo ? (
-          <ul className="list-group">
+
+      {todo ? (
+        <div className="p-4 h-100">
+          <ul className="list-group list-group-flush">
             {todo.todo.map((el) => (
               <li
                 className="list-group-item d-flex justify-content-between align-items-center"
@@ -49,25 +50,26 @@ const TodoList = ({ todo }) => {
               </li>
             ))}
           </ul>
-        ) : (
-          <div className="w-100 h-100 d-flex justify-content-center align-items-center">
-            <p className=" fs-3 text-secondary text-opacity-25">
-              Nessuna attività selezionata
-            </p>
-          </div>
-        )}
-      </div>
-
-      <div className="input-group p-4 bg-white border-top sticky-bottom">
-        <span className="input-group-text ">Aggiungi attività</span>
-        <input
-          type="text"
-          className="form-control"
-          aria-label="Aggiungi attività"
-        />
-        <button type="button" className="btn btn-primary">
-          Salva
-        </button>
+        </div>
+      ) : (
+        <div className="w-100 h-100 d-flex justify-content-center align-items-center">
+          <p className=" fs-3 text-secondary text-opacity-25">
+            Nessuna attività selezionata
+          </p>
+        </div>
+      )}
+      <div className="bg-white border-top sticky-bottom">
+        <div className="input-group p-4">
+          <span className="input-group-text ">Aggiungi attività</span>
+          <input
+            type="text"
+            className="form-control"
+            aria-label="Aggiungi attività"
+          />
+          <button type="button" className="btn btn-primary">
+            Salva
+          </button>
+        </div>
       </div>
     </div>
   );
