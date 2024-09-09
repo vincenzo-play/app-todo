@@ -39,7 +39,7 @@ const Activity = ({ todo }) => {
           </ul>
         ) : (
           <div className="w-100 h-100 d-flex justify-content-center align-items-center">
-            <p className=" fs-3 text-secondary text-opacity-25   ">
+            <p className=" fs-3 text-secondary text-opacity-25">
               Nessuna attività selezionata
             </p>
           </div>
@@ -50,7 +50,7 @@ const Activity = ({ todo }) => {
         <span className="input-group-text ">Aggiungi attività</span>
         <input
           type="text"
-          class="form-control"
+          className="form-control"
           aria-label="Aggiungi attività"
         />
         <button type="button" className="btn btn-primary">
