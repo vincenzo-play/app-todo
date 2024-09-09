@@ -14,16 +14,25 @@ const Activity = ({ todo }) => {
       <div className="p-4 h-100 overflow-scroll">
         {todo ? (
           <ul className="list-group">
-            {todo.activity.map((el, indx) => (
-              <li className="list-group-item">
+            {todo.activity.map((el) => (
+              <li className="list-group-item" key={el.id}>
                 <input
                   className="form-check-input me-3"
                   type="checkbox"
-                  defaultValue
-                  id={indx}
+                  checked={el.done}
+                  id={el.id}
                 />
-                <label className="form-check-label" htmlFor={indx}>
-                  {el.name}
+                <label className="form-check-label" htmlFor={el.id}>
+                  <p
+                    className={
+                      el.done
+                        ? "text-black-50 text-decoration-line-through m-0"
+                        : "m-0"
+                    }
+                  >
+                    {" "}
+                    {el.name}
+                  </p>
                 </label>
               </li>
             ))}
@@ -31,7 +40,7 @@ const Activity = ({ todo }) => {
         ) : (
           <div className="w-100 h-100 d-flex justify-content-center align-items-center">
             <p className=" fs-3 text-secondary text-opacity-25   ">
-              Nessuna attività
+              Nessuna attività selezionata
             </p>
           </div>
         )}

@@ -32,7 +32,10 @@ const SideBar = ({ user, list, windowSize, setTodo }) => {
               }`}
               onClick={() => handleChangeClick(el)}
             >
-              {el.label}
+              <div className="d-flex justify-content-between">
+                <div>{el.label}</div>
+                <div>{el.activity.length}</div>
+              </div>
             </button>
           ))}
         </div>
