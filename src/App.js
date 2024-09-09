@@ -4,7 +4,7 @@ import { far } from "@fortawesome/free-regular-svg-icons";
 import { fas } from "@fortawesome/free-solid-svg-icons";
 import { fab } from "@fortawesome/free-brands-svg-icons";
 
-import SideBar from "./components/SideBar";
+import TodoList from "./components/TodoList";
 import Activity from "./components/Activity";
 // import NavBar from "./components/NavBar";
 
@@ -31,7 +31,7 @@ const App = () => {
     <div className="container-fluid p-0 overflow-hidden">
       {/* <NavBar /> */}
       <div className="row">
-        <SideBar
+        <TodoList
           user={user}
           list={list}
           windowSize={windowSize}

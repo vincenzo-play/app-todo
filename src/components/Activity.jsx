@@ -46,7 +46,7 @@ const Activity = ({ todo }) => {
         )}
       </div>
 
-      <div className="input-group p-4 bg-white border-top sticky-bottom shadow">
+      <div className="input-group p-4 bg-white border-top sticky-bottom">
         <span className="input-group-text ">Aggiungi attività</span>
         <input
           type="text"

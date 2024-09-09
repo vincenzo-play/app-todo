@@ -26,7 +26,6 @@ const User = ({ user: { id, name, img } }) => {
         className="me-2"
       />
       <p className="fw-bold mb-0 me-2">
-        {" "}
         {name}
         {" #"}
         {id}
