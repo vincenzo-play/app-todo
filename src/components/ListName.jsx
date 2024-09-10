@@ -22,23 +22,25 @@ const ListName = ({ user, data, windowSize, setTodo }) => {
       <User user={user} />
 
       <div className="p-4">
-        <div className="list-group ">
+        <ul className="nav nav-pills flex-column mb-auto">
           {data.map((el) => (
-            <button
+            <li
               key={el.id}
-              type="button"
-              className={`list-group-item list-group-item-action ${
-                done[el.id] ? "active" : " "
+              className={`nav-link d-flex align-items-center text-black ${
+                done[el.id] ? "active text-white" : " "
               }`}
               onClick={() => handleChangeClick(el)}
+              style={{ cursor: "pointer" }}
             >
-              <div className="d-flex justify-content-between p-1">
-                <div>{el.list}</div>
-                <div>{el.todo.length}</div>
-              </div>
-            </button>
+              <FontAwesomeIcon
+                icon="fa-solid fa-list"
+                className="opacity-25 "
+              />
+              <span className="ms-2">{el.list}</span>
+              <div className="fw-lighter ms-auto">{el.todo.length}</div>
+            </li>
           ))}
-        </div>
+        </ul>
       </div>
       <div className="d-flex justify-content-center py-4">
         <button className="btn btn-primary rounded-5 ">

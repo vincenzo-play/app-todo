@@ -1,6 +1,24 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 
+const NewActivity = () => {
+  return (
+    <div className="bg-white border-top sticky-bottom">
+      <div className="input-group p-4">
+        <span className="input-group-text ">Aggiungi attività</span>
+        <input
+          type="text"
+          className="form-control"
+          aria-label="Aggiungi attività"
+        />
+        <button type="button" className="btn btn-primary">
+          Salva
+        </button>
+      </div>
+    </div>
+  );
+};
+
 const TodoList = ({ todo }) => {
   return (
     <div className="col-12 col-md-9 p-0 vh-100 overflow-scroll">
@@ -33,7 +51,7 @@ const TodoList = ({ todo }) => {
                     <p
                       className={
                         el.done
-                          ? "text-black-50 text-decoration-line-through m-0"
+                          ? "opacity-50 text-decoration-line-through m-0"
                           : "m-0"
                       }
                     >
@@ -44,7 +62,7 @@ const TodoList = ({ todo }) => {
                 <button className="btn bg-light rounded-circle ">
                   <FontAwesomeIcon
                     icon="fa-regular fa-trash-can"
-                    className="text-black-50"
+                    className="opacity-25"
                   />
                 </button>
               </li>
@@ -58,19 +76,7 @@ const TodoList = ({ todo }) => {
           </p>
         </div>
       )}
-      <div className="bg-white border-top sticky-bottom">
-        <div className="input-group p-4">
-          <span className="input-group-text ">Aggiungi attività</span>
-          <input
-            type="text"
-            className="form-control"
-            aria-label="Aggiungi attività"
-          />
-          <button type="button" className="btn btn-primary">
-            Salva
-          </button>
-        </div>
-      </div>
+      <NewActivity />
     </div>
   );
 };
