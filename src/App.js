@@ -28,7 +28,7 @@ const App = () => {
   }, []);
 
   return (
-    <div className="container-fluid p-0 overflow-hidden">
+    <div className="container-fluid ">
       {/* <NavBar /> */}
       <div className="row">
         <ListName

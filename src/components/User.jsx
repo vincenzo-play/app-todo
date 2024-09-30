@@ -12,7 +12,7 @@ const User = ({ user: { id, name, img } }) => {
 
   return (
     <div
-      className="py-3 d-flex align-items-center justify-content-center border-bottom sticky-sm-top bg-light"
+      className="py-3 d-flex align-items-center justify-content-center border-bottom sticky-top bg-light"
       style={{ height: "73px" }}
     >
       <img

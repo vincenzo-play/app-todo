@@ -3,7 +3,7 @@ import React from "react";
 
 const NewActivity = () => {
   return (
-    <div className="bg-white border-top sticky-bottom">
+    <div className="bg-white sticky-bottom border-top row">
       <div className="input-group p-4">
         <span className="input-group-text ">Aggiungi attività</span>
         <input
@@ -21,10 +21,10 @@ const NewActivity = () => {
 
 const TodoList = ({ todo }) => {
   return (
-    <div className="col-12 col-md-9 p-0 vh-100 overflow-scroll">
+    <div className="col-12 col-md-9 p-0 custom-vh-height overflow-hidden d-flex flex-column">
       <div
-        className="border-bottom p-3 bg-white sticky-top"
-        style={{ height: "73px" }}
+        className="border-bottom p-3 bg-white sticky-top row"
+        style={{ height: "79px" }}
       >
         <h3 className="m-1 fw-bold text-md-start text-center ">
           {todo?.list ? todo?.list : " "}
@@ -32,7 +32,7 @@ const TodoList = ({ todo }) => {
       </div>
 
       {todo ? (
-        <div className="p-4 h-100">
+        <div className="px-3 h-100 overflow-scroll row "  >
           <ul className="list-group list-group-flush">
             {todo.todo.map((el) => (
               <li
@@ -76,7 +76,8 @@ const TodoList = ({ todo }) => {
           </p>
         </div>
       )}
-      <NewActivity />
+   {todo &&   <NewActivity />}
+
     </div>
   );
 };
