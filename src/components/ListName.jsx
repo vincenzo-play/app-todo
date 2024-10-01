@@ -13,7 +13,7 @@ const ListName = ({ user, data, windowSize, setTodo }) => {
   };
 
   const handleDoneHover = (value) =>{
-    return done[value.id] && "active text-white"
+    return done[value.id] && "active-cm text-white"
   }
 
   return (
@@ -36,7 +36,7 @@ const ListName = ({ user, data, windowSize, setTodo }) => {
             >
               <FontAwesomeIcon
                 icon="fa-solid fa-list"
-                className={`text-primary ${handleDoneHover(el)}`}
+                className={`colorPrimary ${handleDoneHover(el)}`}
                 size="xs"
               />
               <span className="ms-2">{el.list}</span>
@@ -46,7 +46,7 @@ const ListName = ({ user, data, windowSize, setTodo }) => {
         </ul>
       </div>
       <div className="d-flex justify-content-center py-4">
-        <button className="btn btn-primary rounded-5 ">
+        <button className="btn btn-cm-primary rounded-5 ">
           <FontAwesomeIcon icon="fa-solid fa-plus" />
         </button>
       </div>

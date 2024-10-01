@@ -11,7 +11,7 @@ const NewActivity = () => {
           className="form-control"
           aria-label="Aggiungi attività"
         />
-        <button type="button" className="btn btn-primary">
+        <button type="button" className="btn btn-cm-primary">
           Salva
         </button>
       </div>
@@ -41,7 +41,7 @@ const TodoList = ({ todo }) => {
               >
                 <div>
                   <input
-                    className="form-check-input me-3"
+                    className="form-check-input check-cm me-3"
                     type="checkbox"
                     checked={el.done}
                     id={el.id}
