@@ -23,11 +23,11 @@ const TodoList = ({ todo }) => {
   return (
     <div className="col-12 col-md-9 p-0 custom-vh-height overflow-hidden d-flex flex-column">
       <div
-        className="border-bottom p-3 bg-white sticky-top row"
-        style={{ height: "79px" }}
+        className={`${todo && "border-bottom"} p-3 bg-white sticky-top row`}
+        style={{ height: "73px" }}
       >
-        <h3 className="m-1 fw-bold text-md-start text-center ">
-          {todo?.list ? todo?.list : " "}
+        <h3 className=" fw-bold text-md-start text-center ">
+          {todo?.list ? todo?.list : ""}
         </h3>
       </div>
 
@@ -59,10 +59,10 @@ const TodoList = ({ todo }) => {
                     </p>
                   </label>
                 </div>
-                <button className="btn bg-light rounded-circle ">
+                <button className="btn btn-outline-danger btn-sm rounded-circle ">
                   <FontAwesomeIcon
                     icon="fa-regular fa-trash-can"
-                    className="opacity-25"
+                    className="opacity-50"
                   />
                 </button>
               </li>
@@ -70,9 +70,9 @@ const TodoList = ({ todo }) => {
           </ul>
         </div>
       ) : (
-        <div className="w-100 h-100 d-flex justify-content-center align-items-center">
-          <p className=" fs-3 text-secondary text-opacity-25">
-            Nessuna attività selezionata
+        <div className=" h-100 d-flex justify-content-center align-items-center">
+          <p className=" fs-3 text-secondary text-opacity-25 m-0">
+            Nessuna lista selezionata
           </p>
         </div>
       )}

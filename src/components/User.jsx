@@ -1,7 +1,7 @@
 import React from "react";
 
 const User = ({ user: { id, name, img } }) => {
-  const defaultImage = "https://picsum.photos/200";
+  const defaultImage = "./todo.svg";
 
   const handleControlImage = (img) => {
     if (img) {
@@ -27,8 +27,6 @@ const User = ({ user: { id, name, img } }) => {
       />
       <p className="fw-bold mb-0 me-2">
         {name}
-        {" #"}
-        {id}
       </p>
     </div>
   );

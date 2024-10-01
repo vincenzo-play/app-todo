@@ -12,6 +12,10 @@ const ListName = ({ user, data, windowSize, setTodo }) => {
     setTodo(el);
   };
 
+  const handleDoneHover = (value) =>{
+    return done[value.id] && "active text-white"
+  }
+
   return (
     <div
       className={`${
@@ -26,15 +30,14 @@ const ListName = ({ user, data, windowSize, setTodo }) => {
           {data.map((el) => (
             <li
               key={el.id}
-              className={`nav-link d-flex align-items-center text-black ${
-                done[el.id] ? "active text-white" : " "
-              }`}
+              className={`nav-link d-flex align-items-center text-black ${handleDoneHover(el)}`}
               onClick={() => handleChangeClick(el)}
               style={{ cursor: "pointer" }}
             >
               <FontAwesomeIcon
                 icon="fa-solid fa-list"
-                className="opacity-25 "
+                className={`text-primary ${handleDoneHover(el)}`}
+                size="xs"
               />
               <span className="ms-2">{el.list}</span>
               <div className="fw-lighter ms-auto">{el.todo.length}</div>
