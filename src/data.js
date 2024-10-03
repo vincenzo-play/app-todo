@@ -1,6 +1,6 @@
 export const user = {
-  name: "Vincenzo Nunziata",
   id: 1,
+  name: "Vincenzo Nunziata",
   img: "https://github.com/lifeisfoo.png",
 };
 

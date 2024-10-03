@@ -3,7 +3,7 @@ import React from "react";
 
 const NewActivity = () => {
   return (
-    <div className="bg-white sticky-bottom border-top row">
+    <div className="bg-white border-top row">
       <div className="input-group p-4">
         <span className="input-group-text ">Aggiungi attività</span>
         <input

@@ -21,7 +21,7 @@ const User = ({ user: { id, name, img } }) => {
         style={{
           width: "40px",
           height: "40px",
-          borderRadius: "50%",
+          borderRadius:10
         }}
         className="me-2"
       />
