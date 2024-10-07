@@ -8,14 +8,17 @@ import ListName from "./components/ListName";
 import TodoList from "./components/TodoList";
 // import NavBar from "./components/NavBar";
 
-import { user, data } from "./data";
+import { user, todoData, listData } from "./data";
 
 library.add(far, fas, fab);
 
 const App = () => {
   const [windowSize, setWindowSize] = useState({ width: window.innerWidth });
-
+  const [listAll, setListAll] = useState(listData);
+  const [list, setList] = useState()
+  const [todoAll, setTodoAll] = useState(todoData);
   const [todo, setTodo] = useState();
+
 
   useEffect(() => {
     const handleResize = () => {
@@ -27,17 +30,24 @@ const App = () => {
     };
   }, []);
 
+  const handleChangeList = (lista) => {
+    setList(lista.name)
+    const todoLista = todoAll.filter(el => el.idList === lista.id)
+    return setTodo(todoLista)
+  }
+
   return (
     <div className="container-fluid ">
       {/* <NavBar /> */}
       <div className="row">
         <ListName
           user={user}
-          data={data}
+          listAll={listAll}
           windowSize={windowSize}
-          setTodo={setTodo}
+          onChangeList={handleChangeList}
+
         />
-        <TodoList todo={todo} />
+        <TodoList todo={todo} list={list} />
       </div>
     </div>
   );

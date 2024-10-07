@@ -2,14 +2,14 @@ import { useState } from "react";
 import User from "./User";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const ListName = ({ user, data, windowSize, setTodo }) => {
-  const [done, setDone] = useState(Array(data.length).fill(false));
+const ListName = ({ user, listAll, windowSize, onChangeList }) => {
+  const [done, setDone] = useState(Array(listAll.length).fill(false));
 
   const handleChangeClick = (el) => {
-    const newDone = Array(data.length).fill(false);
+    onChangeList(el)
+    const newDone = Array(listAll.length).fill(false);
     newDone[el.id] = true;
     setDone(newDone);
-    setTodo(el);
   };
 
   const handleDoneHover = (value) =>{
@@ -23,11 +23,19 @@ const ListName = ({ user, data, windowSize, setTodo }) => {
       } col-12 col-md-3 bg-light pe-0  overflow-scroll `}
       style={{ height: "300px" }}
     >
-      <User user={user} />
+     <div className="d-flex justify-content-between align-items-center border-bottom mx-2">
+        <User user={user} />
+        <div>
+          <button className="btn btn-cm-primary rounded-3">
+              <FontAwesomeIcon icon="fa-solid fa-plus" />
+            </button>
+        </div>
+        
+     </div>
 
       <div className="p-4">
         <ul className="nav nav-pills flex-column mb-auto">
-          {data.map((el) => (
+          {listAll.map((el) => (
             <li
               key={el.id}
               className={`nav-link d-flex align-items-center text-black ${handleDoneHover(el)}`}
@@ -39,16 +47,11 @@ const ListName = ({ user, data, windowSize, setTodo }) => {
                 className={`colorPrimary ${handleDoneHover(el)}`}
                 size="xs"
               />
-              <span className="ms-2">{el.list}</span>
-              <div className="fw-lighter ms-auto">{el.todo.length}</div>
+              <span className="ms-2">{el.name}</span>
+              <div className="fw-lighter ms-auto">{el.count}</div>
             </li>
           ))}
         </ul>
-      </div>
-      <div className="d-flex justify-content-center py-4">
-        <button className="btn btn-cm-primary rounded-5 ">
-          <FontAwesomeIcon icon="fa-solid fa-plus" />
-        </button>
       </div>
     </div>
   );

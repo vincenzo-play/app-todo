@@ -1,7 +1,10 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React from "react";
+import React, { useState } from "react";
 
 const NewActivity = () => {
+
+  const [text,setTest] = useState("")
+
   return (
     <div className="bg-white border-top row">
       <div className="input-group p-4">
@@ -10,16 +13,19 @@ const NewActivity = () => {
           type="text"
           className="form-control"
           aria-label="Aggiungi attività"
+          onChange={(e)=>setTest(e.target.value)}
         />
-        <button type="button" className="btn btn-cm-primary">
+        <button type="button" className="btn btn-cm-primary" onClick={()=>alert(text)}>
           Salva
         </button>
       </div>
+
     </div>
   );
 };
 
-const TodoList = ({ todo }) => {
+const TodoList = ({ todo, list }) => {
+  
   return (
     <div className="col-12 col-md-9 p-0 custom-vh-height overflow-hidden d-flex flex-column">
       <div
@@ -27,14 +33,14 @@ const TodoList = ({ todo }) => {
         style={{ height: "73px" }}
       >
         <h3 className=" fw-bold text-md-start text-center ">
-          {todo?.list ? todo?.list : ""}
+          {list ? list : ""}
         </h3>
       </div>
 
       {todo ? (
         <div className="px-3 h-100 overflow-scroll row "  >
           <ul className="list-group list-group-flush">
-            {todo.todo.map((el) => (
+            {todo.map((el) => (
               <li
                 className="list-group-item d-flex justify-content-between align-items-center"
                 key={el.id}
