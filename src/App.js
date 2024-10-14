@@ -34,8 +34,9 @@ const App = () => {
 
 
   const handleChangeList = (lista) => {
+    setEditList(false)
+    setNewList(false)
     setList(lista)
-
     const todoLista = todoAll.filter(el => el.idList === lista.id)
     return setTodo(todoLista)
   }
