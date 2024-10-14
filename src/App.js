@@ -75,8 +75,9 @@ const App = () => {
           todo={todo}
           list={list}
           onCreate={handleCreateTodo}
-          editList={editList}
           newList={newList}
+          setNewList={setNewList}
+          editList={editList}
           setEditList={setEditList}
         />
       </div>

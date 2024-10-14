@@ -23,10 +23,9 @@ const NewActivity = ({onCreate, text,setTest}) => {
   );
 };
 
-const TodoList = ({ todo, list, onCreate,newList, editList, setEditList}) => {
+const TodoList = ({ todo, list, onCreate,newList, setNewList, editList, setEditList}) => {
   const [text,setTest] = useState("")
 
-  console.log(editList,todo);
 
   
   return (
@@ -50,13 +49,13 @@ const TodoList = ({ todo, list, onCreate,newList, editList, setEditList}) => {
           <div className="px-3">
             <button 
               className="btn btn-success btn-sm mx-3"
-              onClick={()=> setEditList(false)}
+              onClick={editList ? ()=> setEditList(false) : () =>setNewList(false)}
               >
                 <FontAwesomeIcon icon="fa-solid fa-check"  />
               </button>
               <button 
               className="btn btn-danger btn-sm "
-              onClick={()=> setEditList(false)}
+              onClick={editList ? ()=> setEditList(false) : () =>setNewList(false)}
               >
                 <FontAwesomeIcon icon="fa-solid fa-close"  />
               </button>
