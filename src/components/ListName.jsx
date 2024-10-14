@@ -2,7 +2,7 @@ import {useState } from "react";
 import User from "./User";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const ListName = ({ user, listAll, windowSize, onChangeList }) => {
+const ListName = ({ user, listAll, windowSize, onChangeList, onCreate }) => {
   const [done, setDone] = useState(Array(listAll.length).fill(false));
 
   const handleChangeClick = (el) => {
@@ -27,7 +27,7 @@ const ListName = ({ user, listAll, windowSize, onChangeList }) => {
      <div className="d-flex justify-content-between align-items-center border-bottom mx-2">
         <User user={user} />
         <div>
-          <button className="btn btn-cm-primary rounded-3">
+          <button className="btn btn-cm-primary rounded-3" onClick={onCreate}>
               <FontAwesomeIcon icon="fa-solid fa-plus" />
             </button>
         </div>

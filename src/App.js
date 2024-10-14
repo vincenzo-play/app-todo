@@ -17,6 +17,7 @@ const App = () => {
   const [windowSize, setWindowSize] = useState({ width: window.innerWidth });
   const [listAll, setListAll] = useState(listData);
   const [editList, setEditList] = useState(false)
+  const [newList, setNewList] = useState(false)
   const [todoAll, setTodoAll] = useState(todoData);
   const [list, setList] = useState()
   const [todo, setTodo] = useState();
@@ -34,6 +35,7 @@ const App = () => {
 
   const handleChangeList = (lista) => {
     setList(lista)
+
     const todoLista = todoAll.filter(el => el.idList === lista.id)
     return setTodo(todoLista)
   }
@@ -46,11 +48,15 @@ const App = () => {
       name: testo,
       done: false
     }])
+    setListAll([...listAll], list.count++)
   }
 
   const handleCreateList = () => {
-
+    setTodo()
+    setList()
+    setNewList(true)
   }
+
 
   return (
     <div className="container-fluid ">
@@ -61,6 +67,7 @@ const App = () => {
           listAll={listAll}
           windowSize={windowSize}
           onChangeList={handleChangeList}
+          onCreate={handleCreateList}
 
         />
         <TodoList
@@ -68,6 +75,7 @@ const App = () => {
           list={list}
           onCreate={handleCreateTodo}
           editList={editList}
+          newList={newList}
           setEditList={setEditList}
         />
       </div>

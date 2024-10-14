@@ -1,9 +1,8 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState } from "react";
 
-const NewActivity = ({onCreate}) => {
+const NewActivity = ({onCreate, text,setTest}) => {
 
-  const [text,setTest] = useState("")
 
   return (
     <div className="bg-white border-top row">
@@ -24,7 +23,11 @@ const NewActivity = ({onCreate}) => {
   );
 };
 
-const TodoList = ({ todo, list, onCreate, editList, setEditList}) => {
+const TodoList = ({ todo, list, onCreate,newList, editList, setEditList}) => {
+  const [text,setTest] = useState("")
+
+  console.log(editList,todo);
+
   
   return (
     <div className="col-12 col-md-9 p-0 custom-vh-height overflow-hidden d-flex flex-column">
@@ -33,7 +36,7 @@ const TodoList = ({ todo, list, onCreate, editList, setEditList}) => {
         style={{ height: "73px" }}
       >
        { 
-     editList ?
+      editList || newList ?
         <div className="d-flex justify-content-between align-items-center">
          <div className="" style={{height:"42px"}}>
             <input
@@ -46,28 +49,34 @@ const TodoList = ({ todo, list, onCreate, editList, setEditList}) => {
          </div>
           <div className="px-3">
             <button 
-              className="btn btn-success btn-sm rounded-circle"
+              className="btn btn-success btn-sm mx-3"
               onClick={()=> setEditList(false)}
               >
                 <FontAwesomeIcon icon="fa-solid fa-check"  />
               </button>
+              <button 
+              className="btn btn-danger btn-sm "
+              onClick={()=> setEditList(false)}
+              >
+                <FontAwesomeIcon icon="fa-solid fa-close"  />
+              </button>
           </div>
-        </div> : 
+        </div> 
+        : 
         <div className="d-flex justify-content-between align-items-center">
           <h3 className=" fw-bold text-md-start text-center ">
           {list ? list.name : ""}
         </h3>
-          <div className="px-3"> 
+        {todo &&  <div className="px-3"> 
             <button 
             className="btn btn-outline-secondary btn-sm rounded-circle"
             onClick={()=> setEditList(true)}
             >
               <FontAwesomeIcon icon="fa-regular fa-pen-to-square" />
             </button>
-          </div>
+          </div>}
         </div>
     }
-
       </div>
 
       {todo ? (
@@ -115,7 +124,7 @@ const TodoList = ({ todo, list, onCreate, editList, setEditList}) => {
           </p>
         </div>
       )}
-   {todo &&   <NewActivity onCreate={onCreate} />}
+   {todo &&   <NewActivity onCreate={onCreate} text={text}setTest={setTest}/>}
 
     </div>
   );
