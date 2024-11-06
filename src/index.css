@@ -21,25 +21,16 @@ code {
     monospace;
 }
 
-@media (min-width: 768px) {
-  .custom-vh-height {
-    height: 100vh;
-  }
-}
-
-@media (max-width: 768px) {
-  .custom-vh-height {
-    height: 60vh;
-  }
-}
-
-
 .colorPrimary {
   color: var(--color-primary) !important;
 }
 
 .colorSecondary {
   color: var(--color-secondary) !important;
+}
+
+.bg-color-primary {
+  background: var(--color-primary) !important;
 }
 
 .btn-cm-primary {

@@ -20,11 +20,10 @@ const ListName = ({ user, listAll, windowSize, onChangeList, onCreate }) => {
   return (
     <div
       className={`${
-        windowSize.width < 768 ? "border-bottom" : "vh-100 border-end"
-      } col-12 col-md-3 bg-light pe-0  overflow-scroll `}
-      style={{ height: "300px" }}
+        windowSize.width < 768 ? "border-bottom h-100" : "h-100 border-end"
+      }`}
     >
-     <div className="d-flex justify-content-between align-items-center border-bottom mx-2">
+     <div className="d-flex justify-content-between align-items-center border-bottom p-2">
         <User user={user} />
         <div>
           <button className="btn btn-cm-primary rounded-3" onClick={onCreate}>
@@ -34,7 +33,7 @@ const ListName = ({ user, listAll, windowSize, onChangeList, onCreate }) => {
         
      </div>
 
-      <div className="p-4">
+      <div className="p-3">
         <ul className="nav nav-pills flex-column mb-auto">
           {listAll.map((el) => (
             <li

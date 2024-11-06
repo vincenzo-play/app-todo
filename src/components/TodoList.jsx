@@ -1,52 +1,24 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { useState } from "react";
 
-const NewActivity = ({onCreate, text,setTest}) => {
-
-
-  return (
-    <div className="bg-white border-top row">
-      <div className="input-group p-4">
-        <span className="input-group-text ">Aggiungi attività</span>
-        <input
-          type="text"
-          className="form-control"
-          aria-label="Aggiungi attività"
-          onChange={(e)=>setTest(e.target.value)}
-        />
-        <button type="button" className="btn btn-cm-primary" onClick={()=>onCreate(text)}>
-          Salva
-        </button>
-      </div>
-
-    </div>
-  );
-};
-
-const TodoList = ({ todo, list, onCreate,newList, setNewList, editList, setEditList}) => {
-  const [text,setTest] = useState("")
-
+const TodoList = ({ todo, list,newList, setNewList, editList, setEditList}) => {
 
   
   return (
-    <div className="col-12 col-md-9 p-0 custom-vh-height overflow-hidden d-flex flex-column">
-      <div
-        className={`${todo && "border-bottom"} p-3 bg-white sticky-top row`}
-        style={{ height: "73px" }}
-      >
+    <div className="p-3 h-100">
+      <div className={`${todo && "border-bottom"}`}>
        { 
       editList || newList ?
-        <div className="d-flex justify-content-between align-items-center">
-         <div className="" style={{height:"42px"}}>
+        <div className="d-flex justify-content-center align-items-center p-3">
+    
             <input
               type="text"
-              className="form-control"
+              className="form-control mb-1"
               aria-label="Lista attività"
               // onChange={(e)=>setTest(e.target.value)}
               value={list?.name}
             /> 
-         </div>
-          <div className="px-3">
+      
+         
             <button 
               className="btn btn-success btn-sm mx-3"
               onClick={editList ? ()=> setEditList(false) : () =>setNewList(false)}
@@ -60,10 +32,10 @@ const TodoList = ({ todo, list, onCreate,newList, setNewList, editList, setEditL
                 <FontAwesomeIcon icon="fa-solid fa-close"  />
               </button>
           </div>
-        </div> 
+     
         : 
-        <div className="d-flex justify-content-between align-items-center">
-          <h3 className=" fw-bold text-md-start text-center ">
+        <div className="d-flex justify-content-between align-items-center p-3">
+          <h3 className="fw-bold">
           {list ? list.name : ""}
         </h3>
         {todo &&  <div className="px-3"> 
@@ -79,7 +51,7 @@ const TodoList = ({ todo, list, onCreate,newList, setNewList, editList, setEditL
       </div>
 
       {todo ? (
-        <div className="px-3 h-100 overflow-scroll row "  >
+        <div className="p-3 h-100 overflow-scroll">
           <ul className="list-group list-group-flush">
             {todo.map((el) => (
               <li
@@ -123,7 +95,7 @@ const TodoList = ({ todo, list, onCreate,newList, setNewList, editList, setEditL
           </p>
         </div>
       )}
-   {todo &&   <NewActivity onCreate={onCreate} text={text}setTest={setTest}/>}
+   
 
     </div>
   );

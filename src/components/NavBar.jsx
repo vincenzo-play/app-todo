@@ -1,12 +1,17 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import logoTodo from "../assets/todoLogoRid.svg"
 
 const NavBar = () => {
+
+
   return (
-    <nav className="navbar navbar-expand-md bg-primary ">
+    <nav className="navbar navbar-expand-md bg-color-primary ">
       <div className="container-fluid">
         <div className="d-flex text-white p-2">
-          <FontAwesomeIcon icon="fa-solid fa-spell-check" size="lg" />
-          <p className="m-0 fw-bold mx-1">ToDo</p>
+        <img src={logoTodo} alt="logo"    
+        style={{
+          width: "40px",
+          height: "40px"
+        }}/>
         </div>
       </div>
     </nav>

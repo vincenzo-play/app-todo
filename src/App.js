@@ -7,9 +7,10 @@ import { v4 as uuid } from "uuid";
 
 import ListName from "./components/ListName";
 import TodoList from "./components/TodoList";
-// import NavBar from "./components/NavBar";
+import NavBar from "./components/NavBar";
 
 import { user, todoData, listData } from "./data";
+import NewActivity from "./components/NewActivity";
 
 library.add(far, fas, fab);
 
@@ -58,28 +59,32 @@ const App = () => {
     setNewList(true)
   }
 
-
   return (
-    <div className="container-fluid ">
-      {/* <NavBar /> */}
-      <div className="row">
-        <ListName
-          user={user}
-          listAll={listAll}
-          windowSize={windowSize}
-          onChangeList={handleChangeList}
-          onCreate={handleCreateList}
-
-        />
-        <TodoList
-          todo={todo}
-          list={list}
-          onCreate={handleCreateTodo}
-          newList={newList}
-          setNewList={setNewList}
-          editList={editList}
-          setEditList={setEditList}
-        />
+    <div className="container-fluid vh-100 p-0">
+      <div className="d-flex flex-column h-100">
+        <NavBar />
+        <div className="row h-100">
+          <div className="col-12 col-md-3 bg-light pe-0 overflow-auto">
+            <ListName
+              user={user}
+              listAll={listAll}
+              windowSize={windowSize}
+              onChangeList={handleChangeList}
+              onCreate={handleCreateList}
+            />
+          </div>
+          <div className="col-12 col-md-9 p-0 custom-vh-height overflow-hidden d-flex flex-column justify-content-between">
+            <TodoList
+              todo={todo}
+              list={list}
+              newList={newList}
+              setNewList={setNewList}
+              editList={editList}
+              setEditList={setEditList}
+            />
+            {todo && <NewActivity onCreate={handleCreateTodo} />}
+          </div>
+        </div>
       </div>
     </div>
   );
