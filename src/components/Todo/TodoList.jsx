@@ -1,8 +1,8 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import TodoListItem from "./TodoListItem";
 
-const TodoList = ({ todo, list,newList, setNewList, editList, setEditList}) => {
+const TodoList = ({ todo, list,newList, setNewList, editList, setEditList,onChangeTodo, onDelete}) => {
 
-  
   return (
     <div className="p-3 h-100">
       <div className={`${todo && "border-bottom"}`}>
@@ -20,7 +20,7 @@ const TodoList = ({ todo, list,newList, setNewList, editList, setEditList}) => {
       
          
             <button 
-              className="btn btn-success btn-sm mx-3"
+              className="btn btn-success btn-sm mx-2"
               onClick={editList ? ()=> setEditList(false) : () =>setNewList(false)}
               >
                 <FontAwesomeIcon icon="fa-solid fa-check"  />
@@ -53,40 +53,26 @@ const TodoList = ({ todo, list,newList, setNewList, editList, setEditList}) => {
       {todo ? (
         <div className="p-3 h-100 overflow-scroll">
           <ul className="list-group list-group-flush">
-            {todo.map((el) => (
-              <li
-                className="list-group-item d-flex justify-content-between align-items-center"
-                key={el.id}
-              >
-                <div>
-                  <input
-                    className="form-check-input check-cm me-3"
-                    type="checkbox"
-                    checked={el.done}
-                    id={el.id}
-                    readOnly={true}
-                  />
-                  <label className="form-check-label" htmlFor={el.id}>
-                    <p
-                      className={
-                        el.done
-                          ? "opacity-50 text-decoration-line-through m-0"
-                          : "m-0"
-                      }
-                    >
-                      {el.name}
-                    </p>
-                  </label>
-                </div>
-                <button className="btn btn-outline-danger btn-sm rounded-circle ">
-                  <FontAwesomeIcon
-                    icon="fa-regular fa-trash-can"
-                    className="opacity-50"
-                  />
-                </button>
-              </li>
+            {todo.filter(( el ) => el.done === false ).map((el) => (
+              <TodoListItem
+              todo={el}
+              onChangeTodo={()=>onChangeTodo(el)}
+              onDelete={() => onDelete(el)}
+              />
             ))}
           </ul>
+
+          <p className="fw-bold m-0">Completati</p>
+          <ul className="list-group list-group-flush">
+          {todo.filter(( el ) => el.done === true ).map((el) => (
+              <TodoListItem
+              todo={el}
+              onChangeTodo={()=>onChangeTodo(el)}
+              onDelete={() => onDelete(el)}
+              />
+            ))}
+          </ul>
+           
         </div>
       ) : (
         <div className=" h-100 d-flex justify-content-center align-items-center">
