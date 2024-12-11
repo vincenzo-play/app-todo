@@ -1,4 +1,4 @@
-import {useState } from "react";
+import { useState } from "react";
 import User from "./User";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
@@ -6,16 +6,15 @@ const ListName = ({ user, listAll, windowSize, onChangeList, onCreate }) => {
   const [done, setDone] = useState(Array(listAll.length).fill(false));
 
   const handleChangeClick = (el) => {
-    onChangeList(el)
+    onChangeList(el);
     const newDone = Array(listAll.length).fill(false);
     newDone[el.id] = true;
     setDone(newDone);
   };
 
-  const handleDoneHover = (value) =>{
-    return done[value.id] && "active-cm text-white"
-  }
-
+  const handleDoneHover = (value) => {
+    return done[value.id] && "active-cm text-white";
+  };
 
   return (
     <div
@@ -23,22 +22,23 @@ const ListName = ({ user, listAll, windowSize, onChangeList, onCreate }) => {
         windowSize.width < 768 ? "border-bottom h-100" : "h-100 border-end"
       }`}
     >
-     <div className="d-flex justify-content-between align-items-center border-bottom p-2">
+      <div className="d-flex justify-content-between align-items-center border-bottom p-2">
         <User user={user} />
         <div>
           <button className="btn btn-cm-primary rounded-3" onClick={onCreate}>
-              <FontAwesomeIcon icon="fa-solid fa-plus" />
-            </button>
+            <FontAwesomeIcon icon="fa-solid fa-plus" />
+          </button>
         </div>
-        
-     </div>
+      </div>
 
       <div className="p-3">
         <ul className="nav nav-pills flex-column mb-auto">
           {listAll.map((el) => (
             <li
               key={el.id}
-              className={`nav-link d-flex align-items-center text-black ${handleDoneHover(el)}`}
+              className={`nav-link d-flex align-items-center text-black ${handleDoneHover(
+                el
+              )}`}
               onClick={() => handleChangeClick(el)}
               style={{ cursor: "pointer" }}
             >

@@ -10,7 +10,7 @@ import TodoList from "./components/Todo/TodoList";
 import NavBar from "./components/NavBar";
 
 import { user, todoData, listData } from "./data";
-import NewActivity from "./components/NewActivity";
+import NewActivity from "./components/Todo/NewActivity";
 
 library.add(far, fas, fab);
 
