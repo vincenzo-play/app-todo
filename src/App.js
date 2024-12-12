@@ -20,7 +20,7 @@ const App = () => {
   const [todoAll, setTodoAll] = useState(todoData);
   const [list, setList] = useState()
   const [todo, setTodo] = useState();
-  const [todoEditText, setTodoEditText] = useState()
+
 
   useEffect(() => {
     const handleResize = () => {
@@ -57,11 +57,10 @@ const App = () => {
     setListAll([...listAll], list.count++)
   }
 
-  const handleUpdateTodo = (updatedTodo, data) => {
-    console.log(data, 'dat');
+  const handleUpdateTodo = (updatedTodo, newValue) => {
     const updatedTodoAll = todoAll.map((item) =>
       item.idList === updatedTodo.idList && item.id === updatedTodo.id
-        ? { ...item, ...data }
+        ? { ...item, ...newValue }
         : item
     );
 
