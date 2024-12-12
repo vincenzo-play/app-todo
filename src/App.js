@@ -18,10 +18,9 @@ const App = () => {
   const [windowSize, setWindowSize] = useState({ width: window.innerWidth });
   const [listAll, setListAll] = useState(listData);
   const [todoAll, setTodoAll] = useState(todoData);
-  const [editList, setEditList] = useState(false)
-  const [newList, setNewList] = useState(false)
   const [list, setList] = useState()
   const [todo, setTodo] = useState();
+  const [todoEditText, setTodoEditText] = useState()
 
   useEffect(() => {
     const handleResize = () => {
@@ -35,8 +34,6 @@ const App = () => {
 
 
   const handleChangeList = (lista) => {
-    setEditList(false)
-    setNewList(false)
     setList(lista)
     const todoLista = todoAll.filter(el => el.idList === lista.id)
     return setTodo(todoLista)
@@ -60,10 +57,11 @@ const App = () => {
     setListAll([...listAll], list.count++)
   }
 
-  const handleUpdateTodo = (updatedTodo) => {
+  const handleUpdateTodo = (updatedTodo, data) => {
+    console.log(data, 'dat');
     const updatedTodoAll = todoAll.map((item) =>
       item.idList === updatedTodo.idList && item.id === updatedTodo.id
-        ? { ...item, done: !updatedTodo.done }
+        ? { ...item, ...data }
         : item
     );
 
@@ -90,10 +88,13 @@ const App = () => {
   };
 
 
+
+
+
   const handleCreateList = () => {
     setTodo()
     setList()
-    setNewList(true)
+
   }
 
   const handleDeleteTodo = (todo) => {
@@ -131,10 +132,6 @@ const App = () => {
             <TodoList
               todo={todo}
               list={list}
-              newList={newList}
-              setNewList={setNewList}
-              editList={editList}
-              setEditList={setEditList}
               onChangeTodo={handleUpdateTodo}
               onDelete={handleDeleteTodo}
             />

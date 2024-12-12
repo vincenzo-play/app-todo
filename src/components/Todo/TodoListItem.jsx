@@ -1,6 +1,9 @@
+import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const TodoListItem = ({ todo, onChangeTodo, onDelete }) => {
+  const [delModal, setDelModal] = useState(false);
+
   return (
     <>
       {todo?.map((el) => (
@@ -14,29 +17,52 @@ const TodoListItem = ({ todo, onChangeTodo, onDelete }) => {
               type="checkbox"
               checked={el.done}
               id={el.id}
-              onChange={() => onChangeTodo(el)}
+              onChange={() => onChangeTodo(el, { done: !el.done })}
             />
-            <label className="form-check-label" htmlFor={el.id}>
-              <p
-                className={
-                  el.done
-                    ? "opacity-50 text-decoration-line-through m-0"
-                    : "m-0"
-                }
-              >
-                {el.name}
-              </p>
-            </label>
+            <input
+              disabled={el.done}
+              className={
+                el.done
+                  ? "opacity-50 text-decoration-line-through m-0 border-0 "
+                  : "mx-1 my-0 ps-3 border-0"
+              }
+              type="text"
+              value={el.name}
+              id={el.id}
+              onChange={(e) => onChangeTodo(el, { name: e.target.value })}
+            />
           </div>
-          <button
-            className="btn btn-outline-danger btn-sm rounded-circle"
-            onClick={() => onDelete(el)}
-          >
-            <FontAwesomeIcon
-              icon="fa-regular fa-trash-can"
-              className="opacity-50"
-            />
-          </button>
+
+          {delModal === el.id ? (
+            <div>
+              <button
+                className="btn btn-sm btn-danger mx-1 "
+                onClick={() => {
+                  onDelete(el);
+                  setDelModal(false);
+                }}
+              >
+                Elimina
+              </button>
+              <button
+                className="btn btn-sm btn-light  mx-1 "
+                onClick={() => setDelModal(false)}
+              >
+                Annulla
+              </button>
+            </div>
+          ) : (
+            <button
+              id={el.id}
+              className="btn btn-outline-danger btn-sm rounded-circle"
+              onClick={() => setDelModal(el.id)}
+            >
+              <FontAwesomeIcon
+                icon="fa-regular fa-trash-can"
+                className="opacity-50"
+              />
+            </button>
+          )}
         </li>
       ))}
     </>
