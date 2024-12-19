@@ -65,7 +65,7 @@ const App = () => {
     );
 
     const updatedListAll = listAll.map((list) => {
-      if (list.id === updatedTodo.idList) {
+      if (list.id === updatedTodo.idList && newValue.done) {
         return {
           ...list,
           count: updatedTodo.done
