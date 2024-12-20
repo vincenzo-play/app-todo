@@ -34,7 +34,7 @@ const TodoListItem = ({ todo, onChangeTodo, onDelete }) => {
           </div>
 
           {delModal === el.id ? (
-            <div>
+            <div className="d-flex">
               <button
                 className="btn btn-sm btn-danger mx-1 "
                 onClick={() => {
