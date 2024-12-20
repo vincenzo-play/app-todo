@@ -10,7 +10,7 @@ const NewActivity = ({ onCreate }) => {
 
   return (
     <div className="bg-white border-top p-1">
-      <div className="input-group p-3">
+      <div className="input-group p-3 d-flex">
         <span className="input-group-text ">Aggiungi attività</span>
         <input
           type="text"
@@ -21,7 +21,7 @@ const NewActivity = ({ onCreate }) => {
         />
         <button
           type="button"
-          className="btn btn-cm-primary"
+          className="btn btn-cm-primary z-0"
           onClick={() => handleCreateActivity(text)}
         >
           Salva

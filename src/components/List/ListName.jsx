@@ -22,7 +22,7 @@ const ListName = ({ user, listAll, windowSize, onChangeList, onCreate }) => {
         windowSize.width < 768 ? "border-bottom h-100" : "h-100 border-end"
       }`}
     >
-      <div className="d-flex justify-content-between align-items-center border-bottom p-2">
+      <div className="w-100 d-flex justify-content-between align-items-center border-bottom py-2 px-4">
         <User user={user} />
         <div>
           <button className="btn btn-cm-primary rounded-3" onClick={onCreate}>

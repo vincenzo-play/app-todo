@@ -11,7 +11,7 @@ const TodoListItem = ({ todo, onChangeTodo, onDelete }) => {
           className="list-group-item d-flex justify-content-between align-items-center"
           key={el.id}
         >
-          <div>
+          <div className="w-100 d-flex">
             <input
               className="form-check-input check-cm me-3"
               type="checkbox"
@@ -24,7 +24,7 @@ const TodoListItem = ({ todo, onChangeTodo, onDelete }) => {
               className={
                 el.done
                   ? "opacity-50 text-decoration-line-through m-0 border-0 "
-                  : "mx-1 my-0 ps-3 border-0"
+                  : "mx-1 my-0 ps-3 border-0 w-100"
               }
               type="text"
               value={el.name}

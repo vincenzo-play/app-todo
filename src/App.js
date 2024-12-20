@@ -87,30 +87,44 @@ const App = () => {
   };
 
 
-
-
-
   const handleCreateList = () => {
-    setTodo()
-    setList()
-
+    const newList = {
+      id: uuid(),
+      name: "Nuova lista",
+      count: 0
+    }
+    const newListUpdated = [...listAll, newList]
+    setListAll(newListUpdated)
   }
 
-  const handleDeleteTodo = (todo) => {
+  const handleChangeListName = (id, text) => {
+    const filtered = listAll.findIndex((el) => el.id === id)
+    const newListUpdated = [...listAll]
+    newListUpdated[filtered].name = text
+    setListAll(newListUpdated)
+  }
 
+  const handleDeleteList = (id) => {
+    const filtered = listAll.filter((el) => el.id !== id)
+    setListAll(filtered)
+    setList(null)
+    setTodo(null)
+  }
+
+
+  const handleDeleteTodo = (todo) => {
     const updatedTodoAll = todoAll.filter(
       (el) => !(el.idList === todo.idList && el.id === todo.id)
     );
-
     setTodoAll(updatedTodoAll);
-
     if (list) {
       const updatedTodoList = updatedTodoAll.filter((el) => el.idList === list.id);
       setTodo(updatedTodoList);
     }
-
     setListAll([...listAll], list.count--)
   };
+
+
 
 
   return (
@@ -132,7 +146,9 @@ const App = () => {
               todo={todo}
               list={list}
               onChangeTodo={handleUpdateTodo}
+              onChangeListName={handleChangeListName}
               onDelete={handleDeleteTodo}
+              onDeleteList={handleDeleteList}
             />
             {todo && <NewActivity onCreate={handleCreateTodo} />}
           </div>

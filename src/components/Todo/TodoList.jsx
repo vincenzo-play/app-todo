@@ -1,14 +1,46 @@
+import ReactModal from "react-modal";
+import CoreModal from "../core/CoreModal";
 import TodoListItem from "./TodoListItem";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useState } from "react";
 
-const TodoList = ({ todo, list, onChangeTodo, onDelete }) => {
+const TodoList = ({
+  todo,
+  list,
+  onChangeTodo,
+  onDelete,
+  onChangeListName,
+  onDeleteList,
+}) => {
+  const [openModal, setOpenModal] = useState(false);
   const completed = todo?.filter((t) => t.done);
   const notCompleted = todo?.filter((t) => !t.done);
 
   return (
-    <div className="p-3 h-100">
+    <div className="h-100">
       <div className={`${todo && "border-bottom"}`}>
-        <div className="d-flex justify-content-between align-items-center p-3">
-          <h3 className="fw-bold">{list ? list.name : ""}</h3>
+        <div className="d-flex align-items-center" style={{ height: "89px" }}>
+          {list && (
+            <>
+              <input
+                id={list?.id}
+                className={"h3 px-3 border-0 mx-3 my-0 col-11 "}
+                type="text"
+                value={list?.name}
+                onChange={(e) => onChangeListName(list.id, e.target.value)}
+              />
+
+              <button
+                className="btn btn-outline-danger btn-sm"
+                onClick={() => setOpenModal(true)}
+              >
+                <FontAwesomeIcon
+                  icon="fa-regular fa-trash-can "
+                  className="opacity-50"
+                />
+              </button>
+            </>
+          )}
         </div>
       </div>
 
@@ -41,6 +73,17 @@ const TodoList = ({ todo, list, onChangeTodo, onDelete }) => {
           </p>
         </div>
       )}
+      <ReactModal isOpen={openModal}>
+        <CoreModal
+          title={`Elimina ${list?.name}`}
+          onClose={() => setOpenModal(false)}
+          text={`Sei sicuro di eliminare ${list?.name} con ${todo?.length} elementi?`}
+          onClick={() => {
+            onDeleteList(list.id);
+            setOpenModal(false);
+          }}
+        />
+      </ReactModal>
     </div>
   );
 };
