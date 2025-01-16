@@ -1,11 +1,11 @@
 import React from "react";
 
-const User = ({ user: { id, name, img } }) => {
+const User = ({ user: { name, image } }) => {
   const defaultImage = "./todo.svg";
 
-  const handleControlImage = (img) => {
-    if (img) {
-      return img;
+  const handleControlImage = (image) => {
+    if (image) {
+      return image;
     }
     return defaultImage;
   };
@@ -16,7 +16,7 @@ const User = ({ user: { id, name, img } }) => {
       style={{ height: "73px" }}
     >
       <img
-        src={handleControlImage(img)}
+        src={handleControlImage(image)}
         alt="Avatar"
         style={{
           width: "40px",

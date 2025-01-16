@@ -3,7 +3,7 @@ import User from "./User";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const ListName = ({ user, listAll, windowSize, onChangeList, onCreate }) => {
-  const [done, setDone] = useState(Array(listAll.length).fill(false));
+  const [done, setDone] = useState();
 
   const handleChangeClick = (el) => {
     onChangeList(el);
@@ -13,7 +13,9 @@ const ListName = ({ user, listAll, windowSize, onChangeList, onCreate }) => {
   };
 
   const handleDoneHover = (value) => {
-    return done[value.id] && "active-cm text-white";
+    if (done) {
+      return done[value.id] && "active-cm text-white";
+    }
   };
 
   return (
@@ -33,7 +35,7 @@ const ListName = ({ user, listAll, windowSize, onChangeList, onCreate }) => {
 
       <div className="p-3">
         <ul className="nav nav-pills flex-column mb-auto">
-          {listAll.map((el) => (
+          {listAll?.map((el) => (
             <li
               key={el.id}
               className={`nav-link d-flex align-items-center text-black ${handleDoneHover(
@@ -48,7 +50,7 @@ const ListName = ({ user, listAll, windowSize, onChangeList, onCreate }) => {
                 size="xs"
               />
               <span className="ms-2">{el.name}</span>
-              <div className="fw-lighter ms-auto">{el.count}</div>
+              <div className="fw-lighter ms-auto">{el.undone_count}</div>
             </li>
           ))}
         </ul>

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const NewActivity = ({ onCreate }) => {
+const NewActivity = ({ onCreate, list }) => {
   const [text, setTest] = useState("");
 
   const handleCreateActivity = (txt) => {
@@ -13,6 +13,7 @@ const NewActivity = ({ onCreate }) => {
       <div className="input-group p-3 d-flex">
         <span className="input-group-text ">Aggiungi attività</span>
         <input
+          disabled={list === undefined}
           type="text"
           className="form-control"
           aria-label="Aggiungi attività"
@@ -20,6 +21,7 @@ const NewActivity = ({ onCreate }) => {
           onChange={(e) => setTest(e.target.value)}
         />
         <button
+          disabled={list === undefined}
           type="button"
           className="btn btn-cm-primary z-0"
           onClick={() => handleCreateActivity(text)}

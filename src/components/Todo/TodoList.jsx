@@ -3,6 +3,7 @@ import CoreModal from "../core/CoreModal";
 import TodoListItem from "./TodoListItem";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
+import { useEffect } from "react";
 
 const TodoList = ({
   todo,
@@ -13,21 +14,34 @@ const TodoList = ({
   onDeleteList,
 }) => {
   const [openModal, setOpenModal] = useState(false);
+  const [editableText, setEditableText] = useState();
+  const [currentList, setCurrentList] = useState();
   const completed = todo?.filter((t) => t.done);
   const notCompleted = todo?.filter((t) => !t.done);
+
+  useEffect(() => {
+    if (list) {
+      setCurrentList(list);
+      setEditableText(list.name);
+    }
+    if (list?.name === "") setEditableText("Inserisci un nome");
+  }, [list]);
 
   return (
     <div className="h-100">
       <div className={`${todo && "border-bottom"}`}>
         <div className="d-flex align-items-center" style={{ height: "89px" }}>
-          {list && (
+          {currentList && (
             <>
               <input
-                id={list?.id}
-                className={"h3 px-3 border-0 mx-3 my-0 col-11 "}
+                id={currentList.id}
+                className={`h3 px-3 border-0 mx-3 my-0 col-11 ${
+                  currentList.name === "" && "text-danger"
+                }`}
                 type="text"
-                value={list?.name}
-                onChange={(e) => onChangeListName(list.id, e.target.value)}
+                value={editableText}
+                onChange={(e) => setEditableText(e.target.value)}
+                onBlur={() => onChangeListName(currentList.id, editableText)}
               />
 
               <button
@@ -81,6 +95,8 @@ const TodoList = ({
           onClick={() => {
             onDeleteList(list.id);
             setOpenModal(false);
+            setEditableText("");
+            setCurrentList();
           }}
         />
       </ReactModal>
