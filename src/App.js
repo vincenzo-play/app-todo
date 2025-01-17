@@ -10,6 +10,8 @@ import NavBar from "./components/NavBar";
 
 import NewActivity from "./components/Todo/NewActivity";
 import { deleteData, getData, patchData, postData } from "./utils";
+import ReactModal from "react-modal";
+import CoreModal from "./components/core/CoreModal";
 
 library.add(far, fas, fab);
 
@@ -18,6 +20,7 @@ const App = () => {
   const [lists, setLists] = useState();
   const [todos, setTodos] = useState();
   const [list, setList] = useState()
+  const [error, setError] = useState();
 
   const [user, setUser] = useState({
     id: 1,
@@ -38,32 +41,30 @@ const App = () => {
   useEffect(() => {
     getData("/api/lists").then((data) => {
       setLists(data);
-    })
+    }).catch(() => setError("Errore nella lettura dei dati"))
   }, [todos, list])
 
   const handleChangeList = (lista) => {
     setList(lista);
     getData(`api/todos?listId=${lista.id}`).then((data) => {
       setTodos(data);
-    })
-
+    }).catch(() => setError("Errore nella lettura dei dati"))
   }
 
   const handleCreateTodo = (text) => {
     postData("/api/todos", { name: text, listId: list.id, done: false }).then((newTodo) => {
       setTodos([...todos, newTodo]);
-    });
+    }).catch(() => setError("Errore nella creazione del todo"))
     setLists([...lists], list.count++)
   }
 
   const handleUpdateTodo = (updatedTodo, newValue) => {
-
     patchData(`api/todos/${updatedTodo.id}`, newValue).then((patchedTodo) => {
       const todoIdx = todos.findIndex((t) => t.id === updatedTodo.id);
       const tmpTodos = [...todos];
       tmpTodos[todoIdx] = patchedTodo;
       setTodos(tmpTodos);
-    })
+    }).catch(() => setError("Errore nell'aggiornamento dei dati"))
 
     const updatedListAll = lists.map((list) =>
       list.id === updatedTodo.idList
@@ -75,23 +76,23 @@ const App = () => {
 
   const handleCreateList = () => {
     postData("/api/lists", { name: "Nuova lista" }).then((newList) => {
-      setLists([...lists, newList]);
-    });
+      setLists([...lists, newList]).catch(() => setError("Errore nella creazione della lista"));
+    }).catch(() => setError("Errore nella creazione della lista"))
   };
-  const handleChangeListName = (id, text) => { //Da completare
+  const handleChangeListName = (id, text) => {
     patchData(`/api/lists/${id}`, { name: text }).then((patchedList) => {
       const listIdx = lists.findIndex((l) => l.id === id);
       const tmpLists = [...lists];
       tmpLists[listIdx] = patchedList;
       setLists(tmpLists);
-    });
+    }).catch(() => setError("Errore nel cambio del nome della lista"))
   }
 
   const handleDeleteList = (id) => {
     deleteData(`/api/lists/${id}`).then(() => {
       setLists(lists.filter((el) => el.id !== id));
       setList(undefined);
-    })
+    }).catch(() => setError("Errore nella cancellazione della lista"))
 
   }
   const handleDeleteTodo = (todo) => {
@@ -106,7 +107,7 @@ const App = () => {
         }
         return list;
       }))
-    })
+    }).catch(() => setError("Errore nella cancellazione del todo"))
   }
 
   return (
@@ -136,6 +137,14 @@ const App = () => {
           </div>
         </div>
       </div>
+      <ReactModal isOpen={Boolean(error)}>
+        <CoreModal
+          title={`Errore`}
+          onClose={() => setError(false)}
+          text={`Si è verificato un errore: "${error}"`}
+          error={Boolean(error)}
+        />
+      </ReactModal>
     </div>
   );
 };

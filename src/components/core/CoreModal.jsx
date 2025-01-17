@@ -1,6 +1,6 @@
 import React from "react";
 
-const CoreModal = ({ onClick, title, text, onClose }) => {
+const CoreModal = ({ onClick, title, text, onClose, error = false }) => {
   return (
     <div
       className="modal modal-dialog modal-dialog-centered"
@@ -12,17 +12,19 @@ const CoreModal = ({ onClick, title, text, onClose }) => {
             <h5 className="fw-bold">{title}</h5>
             <button type="button" className="btn-close" onClick={onClose} />
           </div>
-          <div className="modal-body">
-            <p>{text}</p>
+          <div className="modal-body text-danger">
+            <p className={error && "text-danger"}>{text}</p>
           </div>
-          <div className="modal-footer d-flex justify-content-center ">
-            <button className="btn btn-secondary w-25" onClick={onClose}>
-              No
-            </button>
-            <button className="btn btn-danger w-25" onClick={onClick}>
-              Si
-            </button>
-          </div>
+          {!error && (
+            <div className="modal-footer d-flex justify-content-center ">
+              <button className="btn btn-secondary w-25" onClick={onClose}>
+                No
+              </button>
+              <button className="btn btn-danger w-25" onClick={onClick}>
+                Si
+              </button>
+            </div>
+          )}
         </div>
       </div>
     </div>
