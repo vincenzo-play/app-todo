@@ -12,7 +12,7 @@ const CoreModal = ({ onClick, title, text, onClose, error = false }) => {
             <h5 className="fw-bold">{title}</h5>
             <button type="button" className="btn-close" onClick={onClose} />
           </div>
-          <div className="modal-body text-danger">
+          <div className="modal-body">
             <p className={error && "text-danger"}>{text}</p>
           </div>
           {!error && (

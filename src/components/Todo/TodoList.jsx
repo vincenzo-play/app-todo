@@ -32,28 +32,32 @@ const TodoList = ({
       <div className={`${todo && "border-bottom"}`}>
         <div className="d-flex align-items-center" style={{ height: "89px" }}>
           {currentList && (
-            <>
-              <input
-                id={currentList.id}
-                className={`h3 px-3 border-0 mx-3 my-0 col-11 ${
-                  currentList.name === "" && "text-danger"
-                }`}
-                type="text"
-                value={editableText}
-                onChange={(e) => setEditableText(e.target.value)}
-                onBlur={() => onChangeListName(currentList.id, editableText)}
-              />
-
-              <button
-                className="btn btn-outline-danger btn-sm"
-                onClick={() => setOpenModal(true)}
-              >
-                <FontAwesomeIcon
-                  icon="fa-regular fa-trash-can "
-                  className="opacity-50"
+            <div className="p-4 w-100 d-flex justify-content-center align-items-center ">
+              <div className="w-100">
+                <input
+                  id={currentList.id}
+                  className={`h3 w-100 px-3 border-0 mx-1 my-0  ${
+                    currentList.name === "" && "text-danger"
+                  }`}
+                  type="text"
+                  value={editableText}
+                  onChange={(e) => setEditableText(e.target.value)}
+                  onBlur={() => onChangeListName(currentList.id, editableText)}
                 />
-              </button>
-            </>
+              </div>
+
+              <div className="d-flex">
+                <button
+                  className="btn btn-outline-danger btn-sm mx-2"
+                  onClick={() => setOpenModal(true)}
+                >
+                  <FontAwesomeIcon
+                    icon="fa-regular fa-trash-can "
+                    className="opacity-50"
+                  />
+                </button>
+              </div>
+            </div>
           )}
         </div>
       </div>

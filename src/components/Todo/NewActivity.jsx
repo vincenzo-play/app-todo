@@ -21,7 +21,7 @@ const NewActivity = ({ onCreate, list }) => {
           onChange={(e) => setTest(e.target.value)}
         />
         <button
-          disabled={list === undefined}
+          disabled={list === undefined || text === ""}
           type="button"
           className="btn btn-cm-primary z-0"
           onClick={() => handleCreateActivity(text)}

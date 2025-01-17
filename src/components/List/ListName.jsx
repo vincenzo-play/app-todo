@@ -18,6 +18,14 @@ const ListName = ({ user, listAll, windowSize, onChangeList, onCreate }) => {
     }
   };
 
+  const handleNameLength = (name) => {
+    if (name.length > 50) {
+      const maxLenght = name.slice(0, 50) + "...";
+      return maxLenght;
+    }
+    return name;
+  };
+
   return (
     <div
       className={`${
@@ -49,7 +57,7 @@ const ListName = ({ user, listAll, windowSize, onChangeList, onCreate }) => {
                 className={`colorPrimary ${handleDoneHover(el)}`}
                 size="xs"
               />
-              <span className="ms-2">{el.name}</span>
+              <span className="ms-2">{handleNameLength(el.name)}</span>
               <div className="fw-lighter ms-auto">{el.undone_count}</div>
             </li>
           ))}

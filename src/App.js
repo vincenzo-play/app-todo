@@ -22,11 +22,11 @@ const App = () => {
   const [list, setList] = useState()
   const [error, setError] = useState();
 
-  const [user, setUser] = useState({
+  const user = {
     id: 1,
     name: "Vincenzo Nunziata",
     image: "https://github.com/lifeisfoo.png",
-  });
+  };
 
   useEffect(() => {
     const handleResize = () => {
@@ -54,7 +54,7 @@ const App = () => {
   const handleCreateTodo = (text) => {
     postData("/api/todos", { name: text, listId: list.id, done: false }).then((newTodo) => {
       setTodos([...todos, newTodo]);
-    }).catch(() => setError("Errore nella creazione del todo"))
+    }).catch(() => setError("Errore nella creazione dell'attività"))
     setLists([...lists], list.count++)
   }
 
@@ -76,7 +76,7 @@ const App = () => {
 
   const handleCreateList = () => {
     postData("/api/lists", { name: "Nuova lista" }).then((newList) => {
-      setLists([...lists, newList]).catch(() => setError("Errore nella creazione della lista"));
+      setLists([...lists, newList]);
     }).catch(() => setError("Errore nella creazione della lista"))
   };
   const handleChangeListName = (id, text) => {
@@ -107,7 +107,7 @@ const App = () => {
         }
         return list;
       }))
-    }).catch(() => setError("Errore nella cancellazione del todo"))
+    }).catch(() => setError("Errore nella cancellazione dell'attività"))
   }
 
   return (
