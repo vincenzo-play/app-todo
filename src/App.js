@@ -25,7 +25,7 @@ const App = () => {
   const user = {
     id: 1,
     name: "Vincenzo Nunziata",
-    image: "https://github.com/lifeisfoo.png",
+    image: "https://picsum.photos/200",
   };
 
   useEffect(() => {
