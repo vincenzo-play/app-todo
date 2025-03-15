@@ -66,8 +66,6 @@ const App = () => {
   }
 
   const handleUpdateTodo = (updatedTodo, newValue) => {
-
-    console.log(updatedTodo, 'to')
     const updatedTodoAll = todoAll.map((item) =>
       item.idList === updatedTodo.idList && item.id === updatedTodo.id
         ? { ...item, ...newValue }
