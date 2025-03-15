@@ -9,6 +9,7 @@ const ListName = ({ user, listAll, windowSize, onChangeList, onCreate }) => {
     onChangeList(el);
     const newDone = Array(listAll.length).fill(false);
     newDone[el.id] = true;
+    console.log(newDone, "new");
     setDone(newDone);
   };
 
@@ -58,7 +59,7 @@ const ListName = ({ user, listAll, windowSize, onChangeList, onCreate }) => {
                 size="xs"
               />
               <span className="ms-2">{handleNameLength(el.name)}</span>
-              <div className="fw-lighter ms-auto">{el.undone_count}</div>
+              <div className="fw-lighter ms-auto">{el.count}</div>
             </li>
           ))}
         </ul>

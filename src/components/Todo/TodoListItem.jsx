@@ -1,22 +1,24 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const TodoListItem = ({ todo, onChangeTodo, onDelete }) => {
   const [delModal, setDelModal] = useState(false);
 
+  useEffect(() => {}, [todo]);
+
   return (
     <>
-      {todo?.map((el) => (
+      {todo?.map((el, i) => (
         <li
           className="list-group-item d-flex justify-content-between align-items-center"
-          key={el.id}
+          key={i}
         >
           <div className="w-100 d-flex">
             <input
               className="form-check-input check-cm me-3"
               type="checkbox"
               checked={el.done}
-              id={el.id}
+              id={i}
               onChange={() => onChangeTodo(el, { done: !el.done })}
             />
             <input
@@ -28,12 +30,12 @@ const TodoListItem = ({ todo, onChangeTodo, onDelete }) => {
               }
               type="text"
               value={el.name}
-              id={el.id}
+              id={i}
               onChange={(e) => onChangeTodo(el, { name: e.target.value })}
             />
           </div>
 
-          {delModal === el.id ? (
+          {delModal === i ? (
             <div className="d-flex">
               <button
                 className="btn btn-sm btn-danger mx-1 "
@@ -53,9 +55,9 @@ const TodoListItem = ({ todo, onChangeTodo, onDelete }) => {
             </div>
           ) : (
             <button
-              id={el.id}
+              id={i}
               className="btn btn-outline-danger btn-sm rounded-circle"
-              onClick={() => setDelModal(el.id)}
+              onClick={() => setDelModal(i)}
             >
               <FontAwesomeIcon
                 icon="fa-regular fa-trash-can"
